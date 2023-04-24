@@ -1,5 +1,6 @@
 import sys 
-sys.path.append('C:/Users/USER/Desktop/BookingSys/bookingSys/BookingSYS/Controller')
+sys.path.append(r'C:\Users\Owner\Desktop\CSIT314\bookingSys\BookingSYS\Controller')
+#sys.path.append('C:/Users/USER/Desktop/BookingSys/bookingSys/BookingSYS/Controller')
 from adminLoginController import adminLoginController
 
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout

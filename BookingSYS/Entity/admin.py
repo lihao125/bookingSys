@@ -1,3 +1,3 @@
 class admin:
-    def fuc():
+    def fuc(self):
         print("in staff")

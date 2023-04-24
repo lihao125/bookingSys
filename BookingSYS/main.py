@@ -28,8 +28,8 @@ class MainWindow(QMainWindow):
     def adminLog(self):
         # Change directory to the directory containing the Python file you want to run
         # Replace the path with the actual path to your Python file
-        subprocess.Popen(['python', 'C:/Users/USER/Desktop/BookingSys/bookingSys/bookingSYS/Boundary/adminLoginUI.py'])
-
+        subprocess.Popen(['python', r'C:\Users\Owner\Desktop\CSIT314\bookingSys\BookingSYS\Boundary\adminLoginUI.py'])
+        #subprocess.Popen(['python', r'C:\Users\USER\Desktop\CSIT314\bookingSys\BookingSYS\Boundary\adminLoginUI.py'])
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
