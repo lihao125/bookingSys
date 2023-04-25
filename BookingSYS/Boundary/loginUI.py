@@ -41,6 +41,6 @@ class loginUI(QWidget):
 
         # do the login validation here
         if username == 'admin' and password == 'password':
-            sd = adminLoginController.addStaff(self, self.stackedWidget)
+            adminLoginController.addStaff(self, self.stackedWidget)
         else:
             print('Login failed.')
