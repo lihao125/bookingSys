@@ -1,35 +1,44 @@
 import sys
 import subprocess
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout
-
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QStackedWidget
+sys.path.append('./Boundary')
+from loginUI import loginUI
+from adminUI import adminUI
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
         # set the window properties
-        self.setGeometry(100, 100, 300, 300)
+        self.resize(800,600)
         self.setWindowTitle('Main Page')
 
-        layout = QVBoxLayout()
+        #stackedwidget to move from page to page
+        self.stackedWidget = QStackedWidget()
+        self.setCentralWidget(self.stackedWidget)
 
+        #main page
+        self.layoutMain = QVBoxLayout()
         button = QPushButton('Admin')
         button.clicked.connect(self.adminLog)
 
-        layout.addWidget(QLabel('WHO ARE YOU!'))
-        layout.addWidget(button)
+        self.layoutMain.addWidget(QLabel('WHO ARE YOU!'))
+        self.layoutMain.addWidget(button)
 
-        central_widget = QWidget()
-        central_widget.setLayout(layout)
+        self.pageMain = QWidget()
+        self.pageMain.setLayout(self.layoutMain)
+        self.stackedWidget.addWidget(self.pageMain)
 
-        self.setCentralWidget(central_widget)
+
+        #login page from another class
+        self.pageLogin = loginUI(self.stackedWidget)
+        self.stackedWidget.addWidget(self.pageLogin)
+        
 
     def adminLog(self):
-        # Change directory to the directory containing the Python file you want to run
-        # Replace the path with the actual path to your Python file
-        subprocess.Popen(['python', r'C:\Users\Owner\Desktop\CSIT314\bookingSys\BookingSYS\Boundary\adminLoginUI.py'])
-        #subprocess.Popen(['python', r'C:\Users\USER\Desktop\CSIT314\bookingSys\BookingSYS\Boundary\adminLoginUI.py'])
+        self.stackedWidget.setCurrentIndex(1)
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
